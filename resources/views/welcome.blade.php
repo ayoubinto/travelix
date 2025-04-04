@@ -145,7 +145,7 @@
 				<div class="search_panel active">
 					<form action="#" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 						<div class="search_item">
-							<div>destination</div>
+							<div>D'où partez-vous ?</div>
 							<!-- <input type="text" class="destination search_input" required="required"> -->
 							<select name="adults" id="adults_1" class="dropdown_item_select search_input">
 							@foreach($villes as $ville)
@@ -186,7 +186,7 @@
 				<div class="search_panel">
 					<form action="#" id="search_form_2" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 						<div class="search_item">
-							<div>destination</div>
+							<div>D'où partez-vous ?</div>
 							<input type="text" class="destination search_input" required="required">
 						</div>
 						<div class="search_item">
@@ -222,7 +222,7 @@
 				<div class="search_panel">
 					<form action="#" id="search_form_3" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 						<div class="search_item">
-							<div>destination</div>
+							<div>D'où partez-vous ?</div>
 							<input type="text" class="destination search_input" required="required">
 						</div>
 						<div class="search_item">
@@ -258,7 +258,7 @@
 				<div class="search_panel">
 					<form action="#" id="search_form_4" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 						<div class="search_item">
-							<div>destination</div>
+							<div>D'où partez-vous ?</div>
 							<input type="text" class="destination search_input" required="required">
 						</div>
 						<div class="search_item">
@@ -294,7 +294,7 @@
 				<div class="search_panel">
 					<form action="#" id="search_form_5" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 						<div class="search_item">
-							<div>destination</div>
+							<div>D'où partez-vous ?</div>
 							<input type="text" class="destination search_input" required="required">
 						</div>
 						<div class="search_item">
@@ -330,7 +330,7 @@
 				<div class="search_panel">
 					<form action="#" id="search_form_6" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
 						<div class="search_item">
-							<div>destination</div>
+							<div>D'où partez-vous ?</div>
 							<input type="text" class="destination search_input" required="required">
 						</div>
 						<div class="search_item">
