@@ -13,8 +13,4 @@ class VilleController extends Controller
         $airports = Airport::select('id','city')->distinct()->get();
         return view('welcome', compact('airports'));
     }
-    public function index_page_voyage_per(){
-        $airports = Airport::select('city')->distinct()->get();
-        return view('Voyage_per', compact('airports'));
-    }
 }
