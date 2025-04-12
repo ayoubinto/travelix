@@ -479,12 +479,16 @@ section
 3.3 Main Nav
 *********************************/
 
-
+.main_nav_list li a{
+	font-family:"Poppins", sans-serif;
+	font-weight:600;
+}
 .main_nav_item
 {
 	position: relative;
 	display: inline-block;
 	margin-right: 40px;
+
 }
 .main_nav_item:last-child
 {

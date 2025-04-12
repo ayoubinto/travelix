@@ -33,33 +33,33 @@
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
 							<h1>discover</h1>
 							<h1>the world</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explore now<span></span><span></span><span></span></a></div>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explorer maintenant<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>
 
 				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
-					<div class="home_slider_background" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(images/12.jpg)"></div>
 
 					<div class="home_slider_content text-center">
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-							<h1>discover</h1>
-							<h1>the world</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explore now<span></span><span></span><span></span></a></div>
+							<h1>Wander</h1>
+							<h1>the globe</h1>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explorer maintenant<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>
 
 				<!-- Slider Item -->
 				<div class="owl-item home_slider_item">
-					<div class="home_slider_background" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(images/12.png)"></div>
 
 					<div class="home_slider_content text-center">
 						<div class="home_slider_content_inner" data-animation-in="flipInX" data-animation-out="animate-out fadeOut">
-							<h1>discover</h1>
-							<h1>the world</h1>
-							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explore now<span></span><span></span><span></span></a></div>
+							<h1>See the world,</h1>
+							<h1>live the journey</h1>
+							<div class="button home_slider_button"><div class="button_bcg"></div><a href="#">explorer maintenant<span></span><span></span><span></span></a></div>
 						</div>
 					</div>
 				</div>
@@ -131,11 +131,11 @@
 
 				<div class="search_tabs_container">
 					<div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-						<div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/suitcase.png" alt=""><span>hotels</span></div>
+						<!-- <div class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/suitcase.png" alt=""><span>hotels</span></div> -->
 						<!-- <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/bus.png" alt="">car rentals</div> -->
 						<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/departure.png" alt="">Voyages personnelle</div>
 						<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/island.png" alt="">Voyages organisés</div>
-						<div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/cruise.png" alt="">Croisières</div>
+						<!-- <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/cruise.png" alt="">Croisières</div> -->
 						<!-- <div class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/diving.png" alt="">activities</div> -->
 					</div>		
 				</div>
@@ -148,36 +148,52 @@
 							<div>D'où partez-vous ?</div>
 							<!-- <input type="text" class="destination search_input" required="required"> -->
 							<select name="adults" id="adults_1" class="dropdown_item_select search_input">
-							@foreach($villes as $ville)
-								<option value="{{ $ville->id }}">{{ $ville->nom_ville }}</option>
+							@foreach($airports as $ville)
+								<option value="{{ $ville->id }}">{{ $ville->city }}</option>
 							@endforeach
 							</select>
 						</div>
 						<div class="search_item">
-							<div>check in</div>
-							<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-						</div>
-						<div class="search_item">
-							<div>check out</div>
-							<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-						</div>
-						<div class="search_item">
-							<div>adults</div>
-							<select name="adults" id="adults_1" class="dropdown_item_select search_input">
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
+							<div>Où allez vous ?</div>
+						<select name="adults" id="adults_2" class="dropdown_item_select search_input">
+							@foreach($airports as $ville)
+								<option value="{{ $ville->id }}">{{ $ville->city }}</option>
+							@endforeach
 							</select>
 						</div>
 						<div class="search_item">
-							<div>children</div>
+							<div>Départ</div>
+							<input type="date" class="check_out search_input" placeholder="YYYY-MM-DD">
+						</div>
+						<div class="search_item">
+							<div>Retour</div>
+							<input type="date" class="check_out search_input" placeholder="YYYY-MM-DD">
+						</div>
+						<div class="search_item">
+							<div>adultes</div>
 							<select name="children" id="children_1" class="dropdown_item_select search_input">
-								<option>0</option>
-								<option>02</option>
-								<option>03</option>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
 							</select>
 						</div>
-						<button class="button search_button">search<span></span><span></span><span></span></button>
+						<div class="search_item">
+							<div>Enfants</div>
+							<select name="children" id="children_1" class="dropdown_item_select search_input">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+							</select>
+						</div>
+						<button class="button search_button">recherche<span></span><span></span><span></span></button>
 					</form>
 				</div>
 
@@ -185,35 +201,52 @@
 
 				<div class="search_panel">
 					<form action="#" id="search_form_2" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-						<div class="search_item">
+					<div class="search_item">
 							<div>D'où partez-vous ?</div>
-							<input type="text" class="destination search_input" required="required">
-						</div>
-						<div class="search_item">
-							<div>check in</div>
-							<input type="text" class="check_in search_input" placeholder="YYYY-MM-DD">
-						</div>
-						<div class="search_item">
-							<div>check out</div>
-							<input type="text" class="check_out search_input" placeholder="YYYY-MM-DD">
-						</div>
-						<div class="search_item">
-							<div>adults</div>
-							<select name="adults" id="adults_2" class="dropdown_item_select search_input">
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
+							<!-- <input type="text" class="destination search_input" required="required"> -->
+							<select name="adults" id="adults_1" class="dropdown_item_select search_input">
+							@foreach($airports as $ville)
+								<option value="{{ $ville->id }}">{{ $ville->city }}</option>
+							@endforeach
 							</select>
 						</div>
 						<div class="search_item">
-							<div>children</div>
-							<select name="children" id="children_2" class="dropdown_item_select search_input">
-								<option>0</option>
-								<option>02</option>
-								<option>03</option>
+							<div>Où allez vous ?</div>
+						<select name="adults" id="adults_2" class="dropdown_item_select search_input">
+							@foreach($airports as $ville)
+								<option value="{{ $ville->id }}">{{ $ville->city }}</option>
+							@endforeach
 							</select>
 						</div>
-						<button class="button search_button">search<span></span><span></span><span></span></button>
+						<div class="search_item">
+							<div>Départ</div>
+							<input type="date" class="check_out search_input" placeholder="YYYY-MM-DD">
+						</div>
+						<div class="search_item">
+							<div>adultes</div>
+							<select name="children" id="children_1" class="dropdown_item_select search_input">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+							</select>
+						</div>
+						<div class="search_item">
+							<div>Enfants</div>
+							<select name="children" id="children_1" class="dropdown_item_select search_input">
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+								<option>5</option>
+								<option>6</option>
+								<option>7</option>
+							</select>
+						</div>
+						<button class="button search_button">recherche<span></span><span></span><span></span></button>
 					</form>
 				</div>
 
@@ -242,14 +275,14 @@
 							</select>
 						</div>
 						<div class="search_item">
-							<div>children</div>
+							<div>Enfants</div>
 							<select name="children" id="children_3" class="dropdown_item_select search_input">
 								<option>0</option>
 								<option>02</option>
 								<option>03</option>
 							</select>
 						</div>
-						<button class="button search_button">search<span></span><span></span><span></span></button>
+						<button class="button search_button">recherche<span></span><span></span><span></span></button>
 					</form>
 				</div>
 
@@ -278,14 +311,14 @@
 							</select>
 						</div>
 						<div class="search_item">
-							<div>children</div>
+							<div>Enfants</div>
 							<select name="children" id="children_4" class="dropdown_item_select search_input">
 								<option>0</option>
 								<option>02</option>
 								<option>03</option>
 							</select>
 						</div>
-						<button class="button search_button">search<span></span><span></span><span></span></button>
+						<button class="button search_button">recherche<span></span><span></span><span></span></button>
 					</form>
 				</div>
 
@@ -314,14 +347,14 @@
 							</select>
 						</div>
 						<div class="search_item">
-							<div>children</div>
+							<div>Enfants</div>
 							<select name="children" id="children_5" class="dropdown_item_select search_input">
 								<option>0</option>
 								<option>02</option>
 								<option>03</option>
 							</select>
 						</div>
-						<button class="button search_button">search<span></span><span></span><span></span></button>
+						<button class="button search_button">recherche<span></span><span></span><span></span></button>
 					</form>
 				</div>
 
@@ -350,14 +383,14 @@
 							</select>
 						</div>
 						<div class="search_item">
-							<div>children</div>
+							<div>Enfants</div>
 							<select name="children" id="children_6" class="dropdown_item_select search_input">
 								<option>0</option>
 								<option>02</option>
 								<option>03</option>
 							</select>
 						</div>
-						<button class="button search_button">search<span></span><span></span><span></span></button>
+						<button class="button search_button">recherche<span></span><span></span><span></span></button>
 					</form>
 				</div>
 			</div>

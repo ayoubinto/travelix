@@ -18,4 +18,7 @@ class homeController extends Controller
     public function contact(){
         return view('Contact');
     }
+    public function voyageper(){
+        return view('Voyage_per');
+    }
 }

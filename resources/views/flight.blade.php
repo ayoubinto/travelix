@@ -26,7 +26,7 @@
                 <td>{{ $flight['flight']['number'] ?? 'Inconnu' }}</td>
                 <td>{{ $flight['flight_date'] ?? 'Inconnu' }}</td>
                 <td>{{ $flight['flight_status'] ?? 'Inconnu' }}</td>
-                <td>{{ $flight['departure']['airport'] ?? 'Inconnu' }}</td>
+                <td>{{ extractCity($flight['departure_airport'] ?? '') }}</td>
                 <td>{{ $flight['departure']['scheduled'] 
                         ? \Carbon\Carbon::parse($flight['departure']['scheduled'])->format('Y-m-d H:i') 
                         : 'Non défini' }}</td>
