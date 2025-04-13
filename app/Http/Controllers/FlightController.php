@@ -7,9 +7,15 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Ville;
 use App\Models\Airport;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class FlightController extends Controller
 {
+    public function reserve(Request $request)
+    {
+        $data = $request->all();
+        return view('reservation', compact('data'));
+    }
     public function showForm()
     {
         $names = Airport::select('name')->distinct()->take(50)->get();
@@ -35,7 +41,12 @@ class FlightController extends Controller
         $searchPerformed = false;
         $names = Airport::select('name')->distinct()->take(50)->get();
         $airports = Airport::select('city')->distinct()->get();
-
+        $departure_date = $request->input('departure_date');
+        $return_date = $request->input('return_date');
+        $arrival_city = $request->input('arrival_city');
+        $adults = $request->input('adults');
+        $children = $request->input('children');
+        $formattedDate = Carbon::createFromFormat('Y-m-d', $departure_date)->format('l d F');
         $randomNumber = rand(1000, 10000);
         if ($request->has('departure_city')) {
             $searchPerformed = true;
@@ -48,6 +59,7 @@ class FlightController extends Controller
             'names' => $names,
             'flights' => $flights,
             'searchPerformed' => $searchPerformed,
+            'formattedDate' => $formattedDate,
         ]);
     }
 }

@@ -7,12 +7,12 @@
         <div class="background_voyage_org" style="background-image:url(images/123.jpg);padding-top: 25%;opacity:0.5"></div>
         <div class="home_content">
 			<div class="home_title">VOYAGES Personnelle</div>
-		</div>
+		</div>  
 </div>
 <div class="container_voyage">
   <div class="flight-search-container">
       <h1 class="heading1">RECHERCHER DES VOLS</h1>
-      <form action="{{ route('voyagepers.submit') }}" method="POST">
+      <form action="{{ route('voyagepers.submit') }}" method="POST" id="flightForm">
           @csrf
           <div class="form-group">
               <div class="form-row">
@@ -68,32 +68,40 @@
               </div>
           </div>
           <div class="for_button">
-              <button type="submit" class="search-button">AFFICHER LES VOLS</button>
+              <button type="submit" class="search-button" id="showButton">AFFICHER LES VOLS</button>
           </div>
       </form>
   </div>
 </div>
-<div class="list_vols"> 
-  <div class="forblock">
+<div class="list_vols" id="list_vols"> 
+  <div class="forblock" id="forblock">
     <div class="Filtrer_recherche">
         <h1 class="heading2">Filtrer la recherche</h1>
         <h1 class="heading">Aéroports</h1>
-        @foreach($names as $name)
+        @foreach($flights as $flight)
           <div class="checkbox_airlens">
               <input type="checkbox" 
-                  id="airport_{{ $name['id'] }}" 
+                  id="airport_{{$flight->id}}" 
                   class="input_ch" 
-                  value="{{ $name['id'] }}">
-              <label class="label_ch" for="airport_{{ $name['id'] }}">
-                  {{ $name['name'] }}
+                  value="{{$flight->name}}">
+              <label class="label_ch" for="airport_{{$flight->id}}">
+                  {{ $flight['name'] }}
               </label>
           </div>
         @endforeach
-        <h5 class="heading5" style="height: 25px;"></h1>
     </div>
     <div class="list_volss">
     @if(isset($flights) && count($flights) > 0)
         @foreach($flights as $flight)
+            @php
+                $randomTime = Carbon::now()->addHours(rand(1, 12));
+                $randomTime1 = Carbon::now()->addHours(rand(13, 24)); 
+                $interval = $randomTime->diff($randomTime1);
+                $randomNumbers = rand(5000, 15000);
+                $randumNumberArret = rand(1, 2);
+                $hours = $interval->h;
+                $minutes = $interval->i;
+            @endphp 
             <div class="flight-card">
                 <div class="flight-header"> 
                     <div class="airline-info">
@@ -105,14 +113,7 @@
                     </div>
                     <div class="flight-time">
                         <div class="time-col">
-                        @php
-                            $randomTime = Carbon::now()->addHours(rand(1, 12));
-                            $randomTime1 = Carbon::now()->addMinutes(rand(13, 24)); 
-                            $interval = $randomTime->diff($randomTime1);
-                            $randomNumbers = rand(5000, 15000);
-                            $randumNumberArret = rand(1, 2);
-                        @endphp 
-                          <strong class="times">{{ $randomTime->format('H:i') }}h</strong>
+                          <strong class="times">{{ $randomTime->format('H') }}h{{ $randomTime->format('i') }}min</strong>
                           <p class="city">{{$flight->iata}}</p>
                         </div>
                         <span class="Depart">De</span>
@@ -123,7 +124,7 @@
                         </div>
                         <span class="Depart">À</span>
                         <div class="time-col">
-                            <strong class="times">{{ $randomTime1->format('H:i') }}h</strong>
+                            <strong class="times">{{ $randomTime1->format('H') }}h{{ $randomTime1->format('i') }}min</strong>
                             <p class="city">{{$flight->icao}}</p>
                         </div>
                     </div>
@@ -133,17 +134,47 @@
                 </div>
                 <hr>
                 <div class="flight-footer">
-                    <p class="date">Monday 14 August</p>
+                    @if (isset($formattedDate))
+                        <p class="date">{{ $formattedDate }}</p>
+                    @endif
                     <div class="actions">
                         <a href="#" class="flight-detail">Détails du vol</a>
-                        <button class="book-button">RÉSERVEZ MAINTENANT</button>
+                         <!-- FORMULAIRE DE RÉSERVATION -->
+                    <form action="{{ route('reservation.submit') }}" method="POST">
+                        @csrf
+                        <!-- Valeurs du formulaire principal -->
+                        <input type="hidden" name="departure_city" value="{{ request('departure_city') }}">
+                        <input type="hidden" name="arrival_city" value="{{ request('arrival_city') }}">
+                        <input type="hidden" name="departure_date" value="{{ request('departure_date') }}">
+                        <input type="hidden" name="return_date" value="{{ request('return_date') }}">
+                        <input type="hidden" name="adults" value="{{ request('adults') }}">
+                        <input type="hidden" name="children" value="{{ request('children') }}">
+
+                        <!-- Infos du vol sélectionné -->
+                        <input type="hidden" name="flight_name" value="{{ $flight->name }}">
+                        <input type="hidden" name="tz" value="{{ $flight->tz }}">
+                        <input type="hidden" name="departure_time" value="{{ $randomTime->format('H:i') }}">
+                        <input type="hidden" name="iata" value="{{ $flight->iata }}">
+                        <input type="hidden" name="duration" value="{{ $interval->h }}h {{ $interval->i }}m">
+                        <input type="hidden" name="stops" value="{{ $randumNumberArret }}">
+                        <input type="hidden" name="arrival_time" value="{{ $randomTime1->format('H:i') }}">
+                        <input type="hidden" name="icao" value="{{ $flight->icao }}">
+                        <input type="hidden" name="price" value="{{ $randomNumbers }}">
+                        <input type="hidden" name="formattedDate" value="{{ $formattedDate }}">
+
+                        <button type="submit" class="book-button">RÉSERVEZ MAINTENANT</button>
+                    </form>
                     </div>
                 </div>
             </div>
         @endforeach
     @else
         <div class="no-flights">
-            <p>Aucun vol trouvé pour votre recherche.</p>
+            <div class="animation">
+                <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+                <dotlottie-player src="https://lottie.host/ce2dfad5-b01e-4f30-bc77-863bf2cac530/OtX6XBHHN5.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" autoplay></dotlottie-player>
+                <h1 class="heading3">Aucun vol trouvé</h1>
+            </div>
         </div>
     </div>
     @endif

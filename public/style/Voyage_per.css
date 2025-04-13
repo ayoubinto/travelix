@@ -28,7 +28,8 @@
 }
 .forblock{
     display: flex;
-  justify-content: start;
+    justify-content: start;
+    height: 100vh;
 }
 h1 {
     margin-top: 0;
@@ -40,7 +41,7 @@ h1 {
 
 }
 .heading1{
-    background-color: #4C3973;
+    /* background-color: #4C3973;
     width: 29%;
     height: 20%;
     padding:30px;
@@ -48,7 +49,7 @@ h1 {
     font-family: "Poppins";
     font-weight: 500;
     margin:auto;
-    border-radius:2% / 50%;
+    border-radius:2% / 50%; */
 }
 .heading2{
     background-color: #4C3973;
@@ -83,7 +84,8 @@ h1 {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    margin-top: 60px;
 }
 
 .form-row {
@@ -110,10 +112,12 @@ label {
 
 input, select {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 21px;
+    padding: 15px;
+    border: 1px solid #92949F;;
+    border-radius: 11px;
+    font-size: 18px;
+    background: transparent;
+    font-family: 'Poppins';
 }
 
 .checkbox-group {
@@ -158,6 +162,8 @@ input, select {
     margin-bottom: 5%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 14px;
+    height: fit-content;
+    padding-bottom: 2%;
 }
 .list_volss{
     width: 67%;
@@ -183,11 +189,14 @@ input, select {
 }
 .label_ch {
     position: relative;
-    padding-left: 25px;
+    padding-left: 24px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 14px;
     user-select: none;
     margin: 13px 14%;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 3px;
 }
 .label_ch::before {
     content: "";
@@ -233,7 +242,7 @@ input, select {
     display: flex;
     align-items: center;
     gap: 15px;
-    width: 36%;
+    width: 26%;
   }
   
   .airline-logo {
@@ -262,13 +271,15 @@ input, select {
 .flight-time {
     display: flex;
     align-items: center;
-    gap: 20px;
-    width: 39%;
+    gap:20px;
+    width: 41%;
 }
   
-  .time-col {
+.time-col {
     text-align: center;
-  }
+    margin-top: 16px;
+    margin-bottom: -7px;
+}
   
   .duration {
     text-align: center;
@@ -290,8 +301,9 @@ input, select {
     font-weight: 700;
     color: #5A38D0;
     font-family: 'Poppins';
-    width: 25%;
+    width: 23%;
     text-align: right;
+    padding-right: 15px;
 }
   
   .flight-footer {
@@ -303,8 +315,8 @@ input, select {
   }
   
 .flight-detail {
-    margin-left: 35%;
-    font-size: 25px;
+    margin-left: 30%;
+    font-size: 23px;
     font-family: 'Poppins';
     font-weight: 500;
     color: #5A38D0;
@@ -327,13 +339,13 @@ input, select {
 .times{
     font-weight: 500;
     line-height: 120%;
-    color: black;
-    font-size: 25px;
+    color: #0b0b0b;
+    font-size: 20px;
     font-family: 'Poppins';
 }
 .city{
     font-family: 'Poppins', sans-serif;
-    font-size: 22px;
+    font-size: 19px;
     line-height: 2;
     font-weight: 500;
     color: #373535;
@@ -380,4 +392,128 @@ input, select {
     height: 120px;
     text-align: center;
     padding:15px;
+}
+.heading1 {
+	position: relative;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    line-height: 1;
+    color: #381E5E;
+    margin: 0;
+    padding: 1em;
+    background: none;
+    border:none;
+    cursor: pointer;
+    font-weight: 600;
+
+	&:hover {
+		color: lighten(#381E5E, 20%);
+	}
+	&:focus {
+		color: lighten(#381E5E, 10%);
+		outline: none;
+	}
+	&:active {
+		color: #381E5E;
+	}
+
+	&:before,
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 35%;
+		height: 1px;
+	}
+
+	&:before {
+		top: 0;
+		left: 33%;
+		box-shadow: inset 1px 1px 0 0 #381E5E;
+	}
+	&:after {
+		right: 32%;
+		bottom: 0;
+		box-shadow: inset -1px -1px 0 0 #381E5E;
+	}
+	
+}
+
+.heading1:hover {
+	&:before {
+		animation: hoverShadowBefore 1s forwards;
+	}
+	&:after {
+		animation: hoverShadowAfter 1s forwards;
+	}
+}
+
+@keyframes hoverShadowBefore {
+  	0% {
+    	width: 35%;
+		height: 1px;
+		
+		top: 0;
+		left: 33%;
+  	}
+  	33% {
+   	width: 1px;
+		height: 100%;
+		
+		top: 0;
+		left: 33%;
+  	}
+	66% {
+		width: 1px;
+		height: 1px;
+		
+		top: calc(100% - 1px);
+		left: 33%;
+	}
+	100% {
+   	width: 35%;
+		height: 1px;
+		
+		top: calc(100% - 1px); 
+		left: 33%;
+  	}	
+}
+
+@keyframes hoverShadowAfter {
+  	0% {
+    	width: 35%;
+		height: 1px;
+  	}
+  	33% {
+   	width: 1px;
+		height: 100%;
+		
+		bottom: 0;
+		right: 32%;
+  	}
+	66% {
+		width: 1px;
+		height: 1px;
+		
+		bottom: calc(100% - 1px);
+		right:32%;
+	}
+	100% {
+   	width: 35%;
+		height: 1px;
+		
+		bottom: calc(100% - 1px);
+		right:32%;
+  	}
+}
+.no-flights{
+    height: 23vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.animation{
+    margin: auto;
 }
