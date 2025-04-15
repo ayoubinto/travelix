@@ -1,0 +1,23 @@
+USE travelix;
+
+CREATE TABLE `airports` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `iata` varchar(3) DEFAULT NULL,
+  `icao` varchar(4) DEFAULT NULL,
+  `latitude` decimal(10,8) DEFAULT NULL,
+  `longitude` decimal(11,8) DEFAULT NULL,
+  `altitude` int(11) DEFAULT NULL,
+  `timezone` int(11) DEFAULT NULL,
+  `dst` varchar(1) DEFAULT NULL,
+  `tz` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `source` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `iata` (`iata`),
+  KEY `icao` (`icao`),
+  KEY `city` (`city`),
+  KEY `country` (`country`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

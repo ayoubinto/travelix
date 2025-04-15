@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use App\Models\Ville;
+use App\Models\Nationality;
 use App\Models\Airport;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -13,8 +13,12 @@ class FlightController extends Controller
 {
     public function reserve(Request $request)
     {
+        $pays = Nationality::select('id','nationalite_fr')->orderBy('nationalite_fr', 'asc')->get();
         $data = $request->all();
-        return view('reservation', compact('data'));
+        return view('reservation',[
+            'data' => $data,
+            'pays' => $pays,
+        ]);
     }
     public function showForm()
     {

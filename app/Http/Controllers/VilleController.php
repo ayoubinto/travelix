@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ville;
 use App\Models\Airport;
+use App\Models\Nationality;
 
 class VilleController extends Controller
 {
