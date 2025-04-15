@@ -9,8 +9,8 @@
                 <div class="home_title">Réservation de VOL</div>
             </div>  
     </div>
-    <div class="container_resrvation">
-        <div class="Detais_Res">
+    <div class="container_resrvation" id="container_resrvation" style="display : none">
+        <div class="Detais_Res" id="Detais_Res">
             <h1 class="heading2" style="margin-bottom:0px">Détails de la réservation</h1>
             <div class="flight-card" style="box-shadow:none;  background-position-y: 274px;background-position-x: 5px;background-image:url(images/background_bookinglfight.jpg);background-size: cover;border-radius: 0;">
                 <div class="flight-header"> 
@@ -62,7 +62,7 @@
                 <h1 style="padding: 10px;"></h1>
             </div>
         </div>
-        <div class="Declanche">
+        <div class="Declanche" id="Declanche">
             <div class="Formule_re">
                 <form action="">
                     <h1 class="heading_form">Entrez vos coordonnées</h1>
@@ -110,8 +110,72 @@
                 </div>
             </div>
             <div>
-                <button type="submit" class="book-button">RÉSERVEZ MAINTENANT</button>
+                <button type="submit" class="book-button" id="Reser">RÉSERVEZ MAINTENANT</button>
             </div>
         </div>
     </div>
+    <div class="Div_for_paiement" id="Div_for_paiement" >
+        <form action="" method="post" class="form_paiement">
+            <div class="div_heading_paiement">
+                <i class="fa-solid fa-arrow-left" id="iconprecedent"></i>
+                <h1 class="heading3">PAIEMENT</h1>
+            </div>
+            <div class="div_type_paiment">
+                <div class="visa">
+                    <div class="visa_img">
+                        <img src="images/visa-mastercard-logos-wh429a8o742pgm38.png" class="imgvisa" alt="VISA MASTER CARD">
+                    </div>
+                    <div class="visa_input">
+                        <input type="radio" value="visa" id="visa" class="input"> Payez 340,00$ avec carte de crédit</input>
+                    </div>
+                </div>
+                <div class="visa">
+                    <div class="visa_img">
+                        <img src="images/Paypal_logo_PNG5.png" class="imgvisa" alt="VISA MASTER CARD">
+                    </div>
+                    <div class="visa_input">
+                        <input type="radio" value="paypal" id="paypal" class="input_visa"> Payez 340,00$ avec Paypal</input>
+                    </div>
+                </div>
+            </div>
+            <div class="div_info_p">
+                <div class="div_input_p">
+                    <div class="div_inputs">
+                        <label for="nom">Nom du titulaire de la carte</label>
+                        <input type="text" class="input_voyage paymenet" id="nom" required>
+                    </div>
+                    <div class="div_inputs">
+                        <label for="nbr_c">Numéro de carte</label>
+                        <input type="text" class="input_voyage paymenet" id="nbr_c" placeholder="1234-5678-9012-3456" required>
+                    </div>
+                </div>
+                <div class="div_input_p cvc">
+                    <div class="div_inputs">
+                        <label for="">Valable jusqu'au</label>
+                        <input type="date" class="input_voyage paymenet"  required>
+                    </div>
+                    <div class="div_inputs">
+                        <label for="">CCV / CVC</label>
+                        <input type="text" class="input_voyage paymenet" placeholder="CCV / CVC" required>
+                    </div>
+                    <span class="info">
+                        * Le CVV ou CVC est le code de sécurité de la carte, un numéro unique à trois chiffres situé au dos de votre carte, distinct de son numéro.
+                    </span>
+                </div>
+            </div>
+            <button type="submit" class="book-button btn_payment" id="Reser">PAYMENT</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('iconprecedent').addEventListener('click', function() {
+            document.getElementById('Div_for_paiement').style.display = 'none';
+            document.getElementById('container_resrvation').style.display = 'flex';
+        });
+        document.getElementById('Reser').addEventListener('click', function() {
+            // alert('Réservation réussie !');
+            // window.location.href = '/home';
+            document.getElementById('container_resrvation').style.display = 'none';
+            document.getElementById('Div_for_paiement').style.display = 'flex';
+        });
+    </script>
 @endsection

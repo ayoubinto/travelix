@@ -1,4 +1,4 @@
-.container_resrvation{
+.container_resrvation {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -152,4 +152,117 @@ hr {
 .fw-4002 {
     font-size: 15px;
     color: #463b3b;
+}
+.imgvisa{
+    width: 174px;
+    margin-top: 13px;
+}
+.heading3{
+    width: 100%;
+    padding:20px;
+    padding-top: 20px;
+    color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    margin: 15px auto;
+    padding-top: 19px;
+    font-size: 37px;
+}
+.div_type_paiment{
+    display: flex;
+    justify-content: start;
+    height: 21%;
+}
+.visa{
+    margin: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 16vh;
+    background:#F9F9F9;
+    border-radius:8px;
+}
+.visa_img{
+    margin:19px;
+}
+.input{
+    width: 5%;
+}
+.input_visa{
+    width: 6.5%;
+}
+.Div_for_paiement{
+    display: flex;
+    flex-direction: column;
+    width: 940px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 31px auto;
+    border-radius: 15px;
+    padding: 12px 37px;
+}
+.div_info_p{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    margin-top: 47px;
+}
+.div_input_p{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin:17px;
+}
+.paymenet{
+  border:1px solid #696A73;
+  border-radius:4px;
+  font-size: 16px;
+  max-height: 56px;
+}
+.cvc{
+    gap: 22px;
+}
+.info{
+    font-size: 12px;
+    width: 56%;
+    margin:auto;
+    color: #cc0c0c;
+    font-weight: 500;
+    margin-top: 38px;
+}
+.btn_payment{
+    width: 22%;
+    margin:40px 39%;
+}
+.fa-arrow-left{
+    font-size: 15px;
+    margin:25px auto;
+    background-color: #5A38D0;
+    border-radius:50%;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    padding:8px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.div_heading_paiement{
+    display: flex;
+}
+.fa-arrow-left:hover{
+    background-color: #4b2f9c;
+}
+.div_inputs{
+    width: 47%;
+}
+.div_inputs label{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    margin-bottom: 9px;
+}
+.info{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
