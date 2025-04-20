@@ -266,3 +266,66 @@ hr {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
+.Div_for_validate{
+    /* display: flex;
+    flex-direction: column; */
+    width: 81%;
+    margin: 74px auto;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: linear-gradient(to right, rgb(255, 255, 255) 50%, #4b2f9c 50%);
+    padding: 60px 47px;
+    padding-bottom: 0px;
+    margin-bottom: 53px;
+}
+.information{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.Info{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin: 24px 40px;
+}
+.divers{
+    width: 45%;
+}
+.alldivers{
+    display: flex;
+    flex-wrap: wrap;
+    gap:43px;
+    padding:26px;
+}
+.heading4 h1{
+    font-size: 32px;
+    font-family: 'Poppins', sans-serif;
+    color: #353535;
+    font-weight: 500;
+    margin-left: -16px;
+}
+.heading4 h1 span{
+    color: #FFF;
+}
+.div_heading h1{
+    text-align: left;
+    padding:28px;
+    font-size: 26px;
+    font-family: 'Poppins';
+}
+.vols h1,.alldivers .Label_validate ,.alldivers .payment_v{
+    color:white;  
+}
+.payment_v{
+    border: 1px solid white;
+}
+.btn_validate{
+    margin: auto;
+    margin-bottom: auto;
+    display: block;
+    margin-bottom: 5%;
+    width: 13%;
+    font-size: 19px;
+    font-family: 'Poppins';
+}

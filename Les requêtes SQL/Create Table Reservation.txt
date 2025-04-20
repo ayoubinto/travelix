@@ -1,0 +1,11 @@
+CREATE TABLE Reservation (
+    id_reservation INT PRIMARY KEY AUTO_INCREMENT,
+    id_passeng INT,
+    id_voyagep INT,
+    reference_reservation VARCHAR(20) UNIQUE,
+    nombre_adultes INT DEFAULT 1,
+    nombre_enfants INT DEFAULT 0,
+    date_reservation TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_passeng) REFERENCES Passenger (id_passeng),
+    FOREIGN KEY (id_voyagep) REFERENCES Voyage_p(id_voyagep)
+);

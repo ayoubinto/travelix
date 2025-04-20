@@ -1,0 +1,11 @@
+	CREATE TABLE Passenger (
+    id_passeng INT PRIMARY KEY AUTO_INCREMENT,
+    nom_passeng VARCHAR(50) NOT NULL,
+    prenom_passeng VARCHAR(50) NOT NULL,
+    nation_passeng VARCHAR(50),
+    age_passeng INT,
+    email_passeng VARCHAR(100),
+    phone_passeng VARCHAR(20),
+    postal_code VARCHAR(20),
+    passport_number VARCHAR(50) UNIQUE
+);

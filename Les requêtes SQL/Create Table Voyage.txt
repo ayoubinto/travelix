@@ -1,0 +1,13 @@
+CREATE TABLE Voyage_p (
+    id_voyagep INT PRIMARY KEY AUTO_INCREMENT,
+    ville_depart VARCHAR(50) NOT NULL,
+    ville_arrivee VARCHAR(50) NOT NULL,
+    date_depart DATE NOT NULL,
+    date_arrivee DATE,
+    heure_depart TIME,
+    heure_arrivee TIME,
+    duree VARCHAR(20),
+    nom_aeroport VARCHAR(100),
+    prix DECIMAL(10, 2),
+    type_voyagep ENUM('Personnelle', 'Organisé')
+);

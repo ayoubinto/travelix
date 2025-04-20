@@ -140,9 +140,10 @@
                     <div class="actions">
                         <a href="#" class="flight-detail">Détails du vol</a>
                          <!-- FORMULAIRE DE RÉSERVATION -->
-                    <form action="{{ route('reservation.submit') }}" method="POST">
+                    <form action="{{ route('reservation.handle') }}" method="POST">
                         @csrf
                         <!-- Valeurs du formulaire principal -->
+                        <input type="hidden" name="action" value="reserve">
                         <input type="hidden" name="departure_city" value="{{ request('departure_city') }}">
                         <input type="hidden" name="arrival_city" value="{{ request('arrival_city') }}">
                         <input type="hidden" name="departure_date" value="{{ request('departure_date') }}">

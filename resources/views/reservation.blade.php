@@ -1,7 +1,18 @@
 @extends('Layout.master')
 @section('content')
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 @php
-    $nombretotal = $data['adults'] + $data['children'];
+    $nombretotal = (isset($data['adults']) ? $data['adults'] : 1) + (isset($data['children']) ? $data['children'] : 0);
 @endphp
     <div class="home_slider_container" style="position: relative;">
             <div class="background_voyage_org" style="background-image:url(images/0a5136f59e.jpg);padding-top: 25%;opacity:0.5"></div>
@@ -9,7 +20,7 @@
                 <div class="home_title">Réservation de VOL</div>
             </div>  
     </div>
-    <div class="container_resrvation" id="container_resrvation" style="display : none">
+    <div class="container_resrvation" id="container_resrvation" >
         <div class="Detais_Res" id="Detais_Res">
             <h1 class="heading2" style="margin-bottom:0px">Détails de la réservation</h1>
             <div class="flight-card" style="box-shadow:none;  background-position-y: 274px;background-position-x: 5px;background-image:url(images/background_bookinglfight.jpg);background-size: cover;border-radius: 0;">
@@ -17,11 +28,11 @@
                     <div class="flight-time" style="margin-top: 5%;margin-left: 4.5%;width: 100%;">
                         <div class="time-col">               
                             <strong class="times" style="color: white;">{{ \Carbon\Carbon::createFromFormat('H:i', trim($data['departure_time']))->format('H\hi\m\i\n') }}</strong>
-                            <p class="city" style="color: white;">{{ $data['iata'] }}</p>
+                            <p class="city" style="color: white;">{{ $data['iata'] ?? 'N/A' }}</p>
                         </div>
                         <span class="Depart" style="color: white;">De</span>
                         <div class="duration">
-                            <h5 class="Rendez" style="color: white;">{{ $data['duration'] }}</h5>
+                            <h5 class="Rendez" style="color: white;">{{ $data['icao'] ?? 'N/A' }}</h5>
                             <img src="images/route-plan.png" alt="" class="route_image">
                             <h6 class="Stopping" style="color: white;">1 Arrêt</h6>                              
                         </div>
@@ -64,33 +75,33 @@
         </div>
         <div class="Declanche" id="Declanche">
             <div class="Formule_re">
-                <form action="">
+                <form action="" id="form1">
                     <h1 class="heading_form">Entrez vos coordonnées</h1>
                     <div class="Infor_1">
-                        <select class="dropdownlist_voyage">
+                        <select name="genre" class="dropdownlist_voyage" id="genre">
                             <option selected value="0">Genre</option>
                             <option value="1">Homme</option>
                             <option value="2">Femme</option>
                         </select>
-                        <input type="text" class="input_voyage" placeholder="Nom" required>
-                        <input type="text" class="input_voyage" placeholder="Prénom" required>
+                        <input type="text" name="nom" id="nom" class="input_voyage" placeholder="Nom" required>
+                        <input type="text" name="prenom" id="prenom" class="input_voyage" placeholder="Prénom" required>
                     </div>
                     <div class="Infor_2">
                         <div class="div_for_input">
-                            <input type="text" class="input_voyage" placeholder="Age" required>
-                            <select class="dropdownlist_voyage">
+                            <input type="text" name="age" id="age" class="input_voyage" placeholder="Age" required>
+                            <select name="nationalite" id="nationalite" class="dropdownlist_voyage">
                                 @foreach ($pays as $nation)
                                     <option value="{{ $nation->id }}">{{ $nation->nationalite_fr }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="div_for_input">
-                            <input type="email" class="input_voyage" placeholder="Email" required>
-                            <input type="text" class="input_voyage" placeholder="Votre téléphone" required>
+                            <input type="email" id="email" class="input_voyage" placeholder="Email" required>
+                            <input type="text" id="telep" class="input_voyage" placeholder="Votre téléphone" required>
                         </div>
                         <div class="div_for_input">
-                            <input type="text" class="input_voyage" placeholder="code postale" required>
-                            <input type="text" class="input_voyage" placeholder="Numéro de passeport" required>
+                            <input type="text" id="postal" class="input_voyage" placeholder="code postale" required>
+                            <input type="text" id="passeport" class="input_voyage" placeholder="Numéro de passeport" required>
                         </div>
                     </div>
                 </form>
@@ -113,69 +124,143 @@
                 <button type="submit" class="book-button" id="Reser">RÉSERVEZ MAINTENANT</button>
             </div>
         </div>
+        @csrf
+        
     </div>
-    <div class="Div_for_paiement" id="Div_for_paiement" >
-        <form action="" method="post" class="form_paiement">
-            <div class="div_heading_paiement">
-                <i class="fa-solid fa-arrow-left" id="iconprecedent"></i>
-                <h1 class="heading3">PAIEMENT</h1>
+    
+    <form action="{{ route('reservation.handle') }}" method="post" id="reservationForm">
+        @csrf
+        <div class="Div_for_validate" id="Div_for_validate"  style="display : none">
+        <input type="hidden" name="action" value="store">
+            <div class="heading4">
+                <h1>VÉRIFIEZ LES IN<span>FORMATIONS</span></h1>
             </div>
-            <div class="div_type_paiment">
-                <div class="visa">
-                    <div class="visa_img">
-                        <img src="images/visa-mastercard-logos-wh429a8o742pgm38.png" class="imgvisa" alt="VISA MASTER CARD">
+            <div class="information">
+                <div class="Info">
+                    <div class="div_heading">
+                        <h1>Informations personnelles</h1>
                     </div>
-                    <div class="visa_input">
-                        <input type="radio" value="visa" id="visa" class="input"> Payez 340,00$ avec carte de crédit</input>
+                    <div class="alldivers">
+                        <div class="divers">
+                            <label class="Label_v">Nom</label>
+                            <input type="text" class="input_voyage paymenet" id="name" name="name" >
+                        </div>
+                        <div class="divers">
+                            <label class="Label_v">Prénom</label>
+                            <input type="text" class="input_voyage paymenet" id="las_name" name="last_name" >
+                        </div>
+                        <div class="divers">
+                            <label class="Label_v">Nationalité</label>
+                            <input type="text" class="input_voyage paymenet" id="nationality" name="national" >
+                        </div>
+                        <div class="divers">
+                            <label class="Label_v">Age</label>
+                            <input type="text" class="input_voyage paymenet" id="year" name="age" >
+                        </div>
+                        <div class="divers">
+                            <label class="Label_v">Email</label>
+                            <input type="text" class="input_voyage paymenet" id="mail" name="email" >
+                        </div>
+                        <div class="divers">
+                            <label class="Label_v">Téléphone</label>
+                            <input type="text" class="input_voyage paymenet" id="tele" name="tele" >
+                        </div>
+                        <div class="divers">
+                            <label class="Label_v">Code Postal</label>
+                            <input type="text" class="input_voyage paymenet" id="pos" name="postal" >
+                        </div>
+                        <div class="divers">
+                            <label class="Label_v">Numéro de passeport</label>
+                            <input type="text" class="input_voyage paymenet" id="pass" name="passeport" >
+                        </div>
                     </div>
                 </div>
-                <div class="visa">
-                    <div class="visa_img">
-                        <img src="images/Paypal_logo_PNG5.png" class="imgvisa" alt="VISA MASTER CARD">
+                <div class="Info vols">
+                    <div class="div_heading">
+                        <h1>Informations de vol</h1>
                     </div>
-                    <div class="visa_input">
-                        <input type="radio" value="paypal" id="paypal" class="input_visa"> Payez 340,00$ avec Paypal</input>
+                    <div class="alldivers">
+                        <div class="divers">
+                            <label class="Label_validate">De</label>
+                            <input type="text" class="input_voyage paymenet payment_v" value="{{ $data['departure_city'] ?? 'N/A' }}"  name="depart" readonly>
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">À</label>
+                            <input type="text" class="input_voyage paymenet payment_v"  value="{{ $data['arrival_city'] ?: 'N/A' }}" name="arrive" readonly>
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Départ</label>
+                            <input type="date" class="input_voyage paymenet payment_v" value="{{ $data['departure_date'] ?? 'N/A' }}" name="ladate_depar" readonly>
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Arrivée</label>
+                            <input type="date" class="input_voyage paymenet payment_v"  value="{{ $data['return_date'] ?? 'N/A' }}" name="ladate_arrive" readonly>
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Le temps de départ</label>
+                            <input type="text" class="input_voyage paymenet payment_v" readonly value="{{ isset($data['departure_time']) ? \Carbon\Carbon::createFromFormat('H:i', trim($data['departure_time']))->format('H\hi\m\i\n') : 'N/A' }}" name="depart_time">
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Le temps de arrivée</label>
+                            <input type="text" class="input_voyage paymenet payment_v"  readonly value="{{ isset($data['arrival_time']) ? \Carbon\Carbon::createFromFormat('H:i', trim($data['arrival_time']))->format('H\h i\m\i\n') : 'N/A' }}" name="arrive_time">
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Durée</label>
+                            <input type="text" class="input_voyage paymenet payment_v" value="{{ $data['duration'] ?? 'N/A' }}" name="dureé" readonly>
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Nom de l'aéroport</label>
+                            <input type="text" class="input_voyage paymenet payment_v" readonly value="{{ $data['flight_name'] ?? 'N/A' }}" name="nom_aeroport">
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Nombre d'adultes</label>
+                            <input type="number" class="input_voyage paymenet payment_v" value="{{ $data['adults'] ?? 1 }}" name="adulte">
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Nombre d'enfants</label>
+                            <input type="number" class="input_voyage paymenet payment_v" value="{{ $data['children'] ?? 0 }}" name="enfant">
+                        </div>
+                        <div class="divers">
+                            <label class="Label_validate">Prix</label>
+                            <input type="text" class="input_voyage paymenet payment_v" value="{{ ($data['price'] ?? 0) * (($data['adults'] ?? 1) + ($data['children'] ?? 0)) }} MAD" readonly name="prix">
+                        </div>   
+                        <div class="divers">
+                            <label class="Label_validate">Type de voyage</label>
+                            <input type="text" class="input_voyage paymenet payment_v" value="Voyage Personelle" readonly name="type_voyage">
+                        </div>   
                     </div>
                 </div>
             </div>
-            <div class="div_info_p">
-                <div class="div_input_p">
-                    <div class="div_inputs">
-                        <label for="nom">Nom du titulaire de la carte</label>
-                        <input type="text" class="input_voyage paymenet" id="nom" required>
-                    </div>
-                    <div class="div_inputs">
-                        <label for="nbr_c">Numéro de carte</label>
-                        <input type="text" class="input_voyage paymenet" id="nbr_c" placeholder="1234-5678-9012-3456" required>
-                    </div>
-                </div>
-                <div class="div_input_p cvc">
-                    <div class="div_inputs">
-                        <label for="">Valable jusqu'au</label>
-                        <input type="date" class="input_voyage paymenet"  required>
-                    </div>
-                    <div class="div_inputs">
-                        <label for="">CCV / CVC</label>
-                        <input type="text" class="input_voyage paymenet" placeholder="CCV / CVC" required>
-                    </div>
-                    <span class="info">
-                        * Le CVV ou CVC est le code de sécurité de la carte, un numéro unique à trois chiffres situé au dos de votre carte, distinct de son numéro.
-                    </span>
-                </div>
-            </div>
-            <button type="submit" class="book-button btn_payment" id="Reser">PAYMENT</button>
-        </form>
-    </div>
+        </div>
+        <button type="submit" class="book-button btn_validate" id="Valider" style="display:none"><i class="fa-regular fa-circle-check"></i> Confirmer</button>
+    </form>
     <script>
-        document.getElementById('iconprecedent').addEventListener('click', function() {
-            document.getElementById('Div_for_paiement').style.display = 'none';
-            document.getElementById('container_resrvation').style.display = 'flex';
-        });
         document.getElementById('Reser').addEventListener('click', function() {
-            // alert('Réservation réussie !');
             // window.location.href = '/home';
             document.getElementById('container_resrvation').style.display = 'none';
-            document.getElementById('Div_for_paiement').style.display = 'flex';
+            document.getElementById('Div_for_validate').style.display = 'block';
+            document.getElementById('Valider').style.display = 'block';
+            let nom = document.getElementById('nom').value;
+            let prenom = document.getElementById('prenom').value;
+            let age = document.getElementById('age').value;
+            let nationaliteSelect = document.getElementById('nationalite');
+            let nationaliteNom = nationaliteSelect.options[nationaliteSelect.selectedIndex].text;
+            let email = document.getElementById('email').value;
+            let telep = document.getElementById('telep').value;
+            let postal = document.getElementById('postal').value;
+            let passeport = document.getElementById('passeport').value;
+            document.getElementById('name').value = nom;
+            document.getElementById('las_name').value = prenom;
+            document.getElementById('year').value = age;
+            document.getElementById('mail').value = email;
+            document.getElementById('tele').value = telep;
+            document.getElementById('pos').value = postal;
+            document.getElementById('pass').value = passeport;
+            document.getElementById('nationality').value = nationaliteNom;
+        });
+        document.getElementById('Valider').addEventListener('click', function() {
+            e.preventDefault();
+            document.querySelector('reservationForm').submit();
         });
     </script>
 @endsection
