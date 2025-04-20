@@ -56,7 +56,7 @@
           </div>
           <button class="book-button btn_payment" id="Resert">Payer {{ $reservation->voyage->prix }} MAD</button>
         </div>
-<div class="box" id="boxx" style="display:none">
+<div class="box" id="boxx"  style="display:none">
   <ul class="left">
     <li></li>
     <li></li>
@@ -97,23 +97,13 @@
     <div class="content">
       <span class="jfk">{{ $reservation->voyage->ville_depart }}</span>
       <span class="plane">
-        <?xml version="1.0" ?><svg clip-rule="evenodd" fill-rule="evenodd" height="60" width="60" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#222">
-            <line fill="none" stroke-linecap="round" stroke-width="30" x1="300" x2="55" y1="390" y2="390" />
-            <path d="M98 325c-9 10 10 16 25 6l311-156c24-17 35-25 42-50 2-15-46-11-78-7-15 1-34 10-42 16l-56 35 1-1-169-31c-14-3-24-5-37-1-10 5-18 10-27 18l122 72c4 3 5 7 1 9l-44 27-75-15c-10-2-18-4-28 0-8 4-14 9-20 15l74 63z" fill="#222" stroke-linejoin="round" stroke-width="10" />
-          </g>
-        </svg>
+        <i class="fa-solid fa-plane-departure"></i>
       </span>
       <span class="sfo">{{ $reservation->voyage->ville_arrivee }}</span>
 
       <span class="jfk jfkslip">{{ $reservation->voyage->ville_depart }}</span>
       <span class="plane planeslip">
-        <?xml version="1.0" ?><svg clip-rule="evenodd" fill-rule="evenodd" height="50" width="50" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#222">
-            <line fill="none" stroke-linecap="round" stroke-width="30" x1="300" x2="55" y1="390" y2="390" />
-            <path d="M98 325c-9 10 10 16 25 6l311-156c24-17 35-25 42-50 2-15-46-11-78-7-15 1-34 10-42 16l-56 35 1-1-169-31c-14-3-24-5-37-1-10 5-18 10-27 18l122 72c4 3 5 7 1 9l-44 27-75-15c-10-2-18-4-28 0-8 4-14 9-20 15l74 63z" fill="#222" stroke-linejoin="round" stroke-width="10" />
-          </g>
-        </svg>
+        <i class="fa-solid fa-plane-departure" style="left: 12px;font-size: 28px;"></i>
       </span>
       <span class="sfo sfoslip">{{ $reservation->voyage->ville_arrivee }}</span>
       <div class="sub-content">
@@ -134,6 +124,7 @@
     <div class="barcode slip"></div>
   </div>
 </div>
+<button class="book-button btn_payment" id="facture" style="display:none;background-color:#5E3A79">Télécharger la facture de l'avion</button>
 @endsection
 @section('scripts')
 <script>
@@ -141,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded'); // Debugging line
     
     const paymentButton = document.getElementById('Resert');
+    const factureButton = document.getElementById('facture');
     
     if (!paymentButton) {
         console.error('Payment button not found!');
@@ -163,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         paymentDiv.style.display = 'none';
         ticketDiv.style.display = 'flex';
+        factureButton.style.display = 'block';
         
         // Optional: Scroll to ticket
         // ticketDiv.scrollIntoView({ behavior: 'smooth' });
