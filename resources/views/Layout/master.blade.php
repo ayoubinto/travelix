@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="{{url('style/Voyage_per.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url('style/reservation.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url('style/Facture.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url('style/Login.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +53,7 @@
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
-                                <div class="user_box_login user_box_link"><a href="#">Se connecter</a></div>
+                                <div class="user_box_login user_box_link"><a href="/Login">Se connecter</a></div>
                                 <div class="user_box_register user_box_link"><a href="#">registre</a></div>
                             </div>
                         </div>

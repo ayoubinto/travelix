@@ -14,6 +14,6 @@ Route::post('/reservation', [FlightController::class, 'handleReservation'])->nam
 
 
 Route::get('/Facture/{id}', [FlightController::class, 'show'])->name('facture.show');
-// Route::get('/Facture', function(){
-//      return view('Facture');
-// });
+Route::get('/Login', function(){
+     return view('Login');
+});

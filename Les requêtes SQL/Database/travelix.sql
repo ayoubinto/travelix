@@ -217,6 +217,40 @@ INSERT INTO `migrations` VALUES (7,'0001_01_01_000000_create_users_table',1),(8,
 UNLOCK TABLES;
 
 --
+-- Table structure for table `passenger`
+--
+
+DROP TABLE IF EXISTS `passenger`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `passenger` (
+  `id_passeng` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_passeng` varchar(50) NOT NULL,
+  `prenom_passeng` varchar(50) NOT NULL,
+  `nation_passeng` varchar(50) DEFAULT NULL,
+  `age_passeng` int(11) DEFAULT NULL,
+  `email_passeng` varchar(100) DEFAULT NULL,
+  `phone_passeng` varchar(20) DEFAULT NULL,
+  `postal_code` varchar(20) DEFAULT NULL,
+  `passport_number` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_passeng`),
+  UNIQUE KEY `passport_number` (`passport_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `passenger`
+--
+
+LOCK TABLES `passenger` WRITE;
+/*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
+INSERT INTO `passenger` VALUES (28,'','','',NULL,'','','','','2025-04-19 21:08:12','2025-04-19 21:08:12'),(29,'ffffff','ffffff','Afghan(e)',24,'ayoubbouaziz00@gmail.com','55555555555','55555555555','55555555555','2025-04-19 21:10:42','2025-04-19 21:10:42'),(32,'ffffffdd','ffffff','Afghan(e)',24,'ayoubbouaziz00@gmail.com','5555555535555','5555555555635','5563555555555','2025-04-19 21:12:40','2025-04-19 21:12:40'),(34,'ffffffdd','ffffff','Afghan(e)',24,'ayoubbouaziz00@gmail.com','5555555535555','55555555755635','55637555555555','2025-04-19 21:13:16','2025-04-19 21:13:16'),(36,'ffffffdd','ffffff','Afghan(e)',24,'ayoubbouaziz00@gmail.com','5555555535555','555525555755635','556327555555555','2025-04-19 21:14:10','2025-04-19 21:14:10'),(38,'ffffffdd','ffffff','Afghan(e)',24,'ayoubbouaziz00@gmail.com','5555555535555','555525555755635','7555555555','2025-04-19 21:14:48','2025-04-19 21:14:48'),(39,'ffffffdd','ffffff','Afghan(e)',24,'ayoubbouaziz00@gmail.com','5555555535555','555525555755635','5355555','2025-04-19 21:17:59','2025-04-19 21:17:59'),(40,'Louhabi','othman','Marocain(e)',24,'othman123@gmail.com','0652364512','15400','1254d452','2025-04-20 09:27:35','2025-04-20 09:27:35'),(41,'test','test','Afghan(e)',25,'testtest@test.test','256220000','000000000','0000002','2025-04-20 09:30:36','2025-04-20 09:30:36'),(42,'test','test','Afghan(e)',25,'testtest@test.test','256220000','000000000','00600002','2025-04-20 09:32:04','2025-04-20 09:32:04'),(43,'test','test','Afghan(e)',25,'testtest@test.test','256220000','000000000','006900002','2025-04-20 09:32:39','2025-04-20 09:32:39'),(45,'Benkamoun','imad','Marocain(e)',23,'imad@imad.com','0612345678','12000','30200','2025-04-20 09:40:41','2025-04-20 09:40:41'),(47,'Benkamoun','imad','Marocain(e)',23,'imad@imad.com','0612345678','12000','302000','2025-04-20 09:46:53','2025-04-20 09:46:53'),(48,'Benkamoun','imad','Marocain(e)',23,'imad@imad.com','0612345678','12000','302d000','2025-04-20 09:53:19','2025-04-20 09:53:19'),(49,'Benkamoun','imad','Marocain(e)',23,'imad@imad.com','0612345678','12000','302fd000','2025-04-20 09:53:57','2025-04-20 09:53:57'),(51,'el khalfi','mohamed','Marocain(e)',25,'mohamed@moahmed.com','25669888','25669888','25669888','2025-04-20 10:03:17','2025-04-20 10:03:17'),(52,'el khalfi','mohamed','Marocain(e)',25,'mohamed@moahmed.com','25669888','25669888','256698f88','2025-04-20 10:08:46','2025-04-20 10:08:46'),(53,'el khalfi','mohamed','Marocain(e)',25,'mohamed@moahmed.com','25669888','25669888','256698f88f','2025-04-20 10:09:19','2025-04-20 10:09:19'),(54,'el khalfi','mohamed','Marocain(e)',25,'mohamed@moahmed.com','25669888','25669888','25669d8f88f','2025-04-20 10:09:58','2025-04-20 10:09:58'),(55,'mlawi','malal','Afghan(e)',26,'mlawi@malwai.com','2555555555','2555555555','25555555555dkd','2025-04-20 10:17:11','2025-04-20 10:17:11'),(56,'mlawi','malal','Afghan(e)',26,'mlawi@malwai.com','2555555555','2555555555','2555555d5555dkd','2025-04-20 10:18:33','2025-04-20 10:18:33'),(57,'mlawi','malal','Afghan(e)',26,'mlawi@malwai.com','2555555555','2555555555','2555555d5555ddkd','2025-04-20 10:20:49','2025-04-20 10:20:49'),(58,'fff','dkdkd','Afghan(e)',25,'Bouaziz@gmail.com','25252525','25252525','25252525','2025-04-20 10:33:01','2025-04-20 10:33:01'),(60,'fff','dkdkd','Afghan(e)',25,'Bouaziz@gmail.com','25252525','25252525','25252525f','2025-04-20 10:34:01','2025-04-20 10:34:01'),(61,'fff','dkdkd','Afghan(e)',25,'Bouaziz@gmail.com','25252525','25252525','25d252525f','2025-04-20 10:35:51','2025-04-20 10:35:51'),(63,'fff','dkdkd','Afghan(e)',25,'Bouaziz@gmail.com','25252525','25252525','25d252525fd','2025-04-20 10:37:55','2025-04-20 10:37:55'),(65,'dddddd','dddddd','Marocain(e)',24,'ayoubbouaziz00@gmail.com','2200000','2200000','2200000','2025-04-20 10:54:31','2025-04-20 10:54:31'),(66,'dddddd','dddddd','Marocain(e)',24,'ayoubbouaziz00@gmail.com','2200000','2200000','2200000d','2025-04-20 10:56:20','2025-04-20 10:56:20'),(67,'dddddd','dddddd','Marocain(e)',24,'ayoubbouaziz00@gmail.com','2200000','2200000','2200000dd','2025-04-20 10:56:52','2025-04-20 10:56:52'),(68,'dddddd','ddd','Afghan(e)',NULL,'ayoubbouaziz00@gmail.com','55556633','55556633','55556633','2025-04-20 11:11:02','2025-04-20 11:11:02'),(69,'BOUAZIZ AYOUB','dkdkd','Afghan(e)',25,'ayoubbouaziz00@gmail.com','065365245','555555','hiddenDiv','2025-04-20 11:14:54','2025-04-20 11:14:54'),(70,'BOUAZIZ AYOUB','Bouaziz','Afghan(e)',24,'dkdk@gmail.com','8888888888','8888888888','8888888888','2025-04-20 12:09:38','2025-04-20 12:09:38'),(71,'Louhabid','Othman','Marocain(e)',56,'othma23@gmail.com','25698555','25698555','25698555','2025-04-20 12:24:15','2025-04-20 12:24:15');
+/*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `password_reset_tokens`
 --
 
@@ -265,6 +299,38 @@ INSERT INTO `pays` VALUES (1,'Afghan(e)'),(2,'Ålandais(e)'),(3,'Albanais(e)'),(
 UNLOCK TABLES;
 
 --
+-- Table structure for table `reservation`
+--
+
+DROP TABLE IF EXISTS `reservation`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reservation` (
+  `id_reservation` int(11) NOT NULL AUTO_INCREMENT,
+  `id_passeng` int(11) DEFAULT NULL,
+  `id_voyagep` int(11) DEFAULT NULL,
+  `nombre_adultes` int(11) DEFAULT 1,
+  `nombre_enfants` int(11) DEFAULT 0,
+  `date_reservation` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id_reservation`),
+  KEY `id_passeng` (`id_passeng`),
+  KEY `id_voyagep` (`id_voyagep`),
+  CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_passeng`) REFERENCES `passenger` (`id_passeng`),
+  CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_voyagep`) REFERENCES `voyage_p` (`id_voyagep`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reservation`
+--
+
+LOCK TABLES `reservation` WRITE;
+/*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
+INSERT INTO `reservation` VALUES (1,NULL,NULL,1,0,'2025-04-19 20:41:38'),(2,NULL,NULL,1,3,'2025-04-19 20:57:31'),(3,NULL,NULL,1,3,'2025-04-19 20:58:54'),(4,NULL,NULL,1,3,'2025-04-19 21:04:44'),(5,NULL,NULL,1,3,'2025-04-19 21:08:12'),(6,NULL,NULL,1,0,'2025-04-19 21:10:42'),(7,NULL,NULL,1,0,'2025-04-19 21:12:40'),(8,NULL,NULL,1,0,'2025-04-19 21:13:16'),(9,NULL,NULL,1,0,'2025-04-19 21:14:10'),(10,NULL,NULL,1,0,'2025-04-19 21:14:48'),(11,NULL,NULL,1,0,'2025-04-19 21:17:59'),(12,NULL,NULL,1,3,'2025-04-20 09:27:35'),(13,NULL,NULL,1,3,'2025-04-20 09:30:36'),(14,42,18,1,3,'2025-04-20 09:32:04'),(15,43,19,1,3,'2025-04-20 09:32:39'),(16,45,20,1,1,'2025-04-20 09:40:41'),(17,47,21,1,1,'2025-04-20 09:46:53'),(18,48,22,1,1,'2025-04-20 09:53:19'),(19,49,23,1,1,'2025-04-20 09:53:57'),(20,51,24,1,0,'2025-04-20 10:03:17'),(21,52,25,1,0,'2025-04-20 10:08:46'),(22,53,26,1,0,'2025-04-20 10:09:19'),(23,54,27,1,0,'2025-04-20 10:09:58'),(24,55,28,1,0,'2025-04-20 10:17:11'),(25,56,29,1,0,'2025-04-20 10:18:33'),(26,57,30,1,0,'2025-04-20 10:20:49'),(27,58,31,1,0,'2025-04-20 10:33:01'),(28,60,32,1,0,'2025-04-20 10:34:01'),(29,61,33,1,0,'2025-04-20 10:35:51'),(30,63,34,1,0,'2025-04-20 10:37:55'),(31,65,35,1,0,'2025-04-20 10:54:31'),(32,66,36,1,0,'2025-04-20 10:56:20'),(33,67,37,1,0,'2025-04-20 10:56:52'),(34,67,38,1,0,'2025-04-20 10:57:51'),(35,67,39,1,0,'2025-04-20 10:58:14'),(36,68,40,1,0,'2025-04-20 11:11:02'),(37,69,41,1,0,'2025-04-20 11:14:54'),(38,69,42,1,0,'2025-04-20 11:24:14'),(39,69,43,1,0,'2025-04-20 11:31:35'),(40,70,44,1,0,'2025-04-20 12:09:38'),(41,70,45,1,0,'2025-04-20 12:14:07'),(42,71,46,1,6,'2025-04-20 12:24:15');
+/*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -290,7 +356,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('jqYQQNvuFhKUHfN0k6TLHyzBFVncnhXUEuxGgg2g',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoib2tPMjJqQkFpcUhtb3k1U2pmenBlVUxSemdZdXN3dmpUZUlzQkRBYSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1744660013),('Xn61sZLPHOM4uK4B17kMQUtgKOLLudVp6cbkHLLo',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiQjBIN3d2WUU0c1EzVXNHcEthOUM4OUYxVjlDY2dBYk9HZmdvT3JKRSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9Wb3lhZ2VwZXJzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1744668469),('YH6yjqG76juBRsjBhHK1OZU6XKBxeKFcyGLAkcSC',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWTdZSFJLUUI4R2dITVVYTXZhM2t0SGdPWVVXdFBRWWVMWTdyUUtUUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=',1744717560),('ZskiWQeOyXjSH2JG7wrmo3HZi2FJGpVZy9MbMXiy',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiWmZ0NTFtSFlqbDdLOFJ6Uk9mQ3VLUjVRdlVPajhWZlZtZnZ0QnJwaSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9Wb3lhZ2VwZXJzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1744670033);
+INSERT INTO `sessions` VALUES ('7WX4CJViGeBxHIUZJCT9wxuiWnfPU3qQQYJOwGi6',NULL,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0','YTozOntzOjY6Il90b2tlbiI7czo0MDoiNHhyeXdmZlBidnR5V3kzQVRkWWx0aDdTUWh2TWFVYkhXWWkxZ2tPMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9Wb3lhZ2VwZXJzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==',1745076539);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,6 +389,41 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `voyage_p`
+--
+
+DROP TABLE IF EXISTS `voyage_p`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `voyage_p` (
+  `id_voyagep` int(11) NOT NULL AUTO_INCREMENT,
+  `ville_depart` varchar(50) NOT NULL,
+  `ville_arrivee` varchar(50) NOT NULL,
+  `date_depart` date NOT NULL,
+  `date_arrivee` date DEFAULT NULL,
+  `heure_depart` time DEFAULT NULL,
+  `heure_arrivee` time DEFAULT NULL,
+  `duree` varchar(20) DEFAULT NULL,
+  `nom_aeroport` varchar(100) DEFAULT NULL,
+  `prix` double DEFAULT NULL,
+  `type_voyagep` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_voyagep`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `voyage_p`
+--
+
+LOCK TABLES `voyage_p` WRITE;
+/*!40000 ALTER TABLE `voyage_p` DISABLE KEYS */;
+INSERT INTO `voyage_p` VALUES (8,'Goroka','Goroka','2025-04-19','2025-04-19','03:49:00','13:49:00','10h 0m','Goroka Airport',20780,'Voyage Personelle','2025-04-19 21:04:44','2025-04-19 21:04:44'),(9,'Goroka','Goroka','2025-04-19','2025-04-19','03:49:00','13:49:00','10h 0m','Goroka Airport',20780,NULL,'2025-04-19 21:08:12','2025-04-19 21:08:12'),(10,'Goroka','Goroka','2025-04-19','2025-04-19','23:10:00','13:10:00','14h 0m','Goroka Airport',12961,NULL,'2025-04-19 21:10:42','2025-04-19 21:10:42'),(11,'Goroka','Goroka','2025-04-19','2025-04-19','23:10:00','13:10:00','14h 0m','Goroka Airport',12961,NULL,'2025-04-19 21:12:40','2025-04-19 21:12:40'),(12,'Goroka','Goroka','2025-04-19','2025-04-19','23:10:00','13:10:00','14h 0m','Goroka Airport',12961,NULL,'2025-04-19 21:13:16','2025-04-19 21:13:16'),(13,'Goroka','Goroka','2025-04-19','2025-04-19','23:10:00','13:10:00','14h 0m','Goroka Airport',12961,NULL,'2025-04-19 21:14:10','2025-04-19 21:14:10'),(14,'Goroka','Goroka','2025-04-19','2025-04-19','23:10:00','13:10:00','14h 0m','Goroka Airport',12961,NULL,'2025-04-19 21:14:48','2025-04-19 21:14:48'),(15,'Goroka','Goroka','2025-04-19','2025-04-19','23:10:00','13:10:00','14h 0m','Goroka Airport',12961,NULL,'2025-04-19 21:17:59','2025-04-19 21:17:59'),(16,'Fes','Agadir','2025-04-20','2025-04-30','20:26:00','06:26:00','10h 0m','Fes Sefrou Airport',57752,NULL,'2025-04-20 09:27:35','2025-04-20 09:27:35'),(17,'Fes','Agadir','2025-04-20','2025-04-30','20:26:00','06:26:00','10h 0m','Fes Sefrou Airport',57752,'Voyage Personelle','2025-04-20 09:30:36','2025-04-20 09:30:36'),(18,'Fes','Agadir','2025-04-20','2025-04-30','20:26:00','06:26:00','10h 0m','Fes Sefrou Airport',57752,'Voyage Personelle','2025-04-20 09:32:04','2025-04-20 09:32:04'),(19,'Fes','Agadir','2025-04-20','2025-04-30','20:26:00','06:26:00','10h 0m','Fes Sefrou Airport',57752,'Voyage Personelle','2025-04-20 09:32:39','2025-04-20 09:32:39'),(20,'Rabat','Esbjerg','2025-04-20','2025-04-20','20:39:00','06:39:00','10h 0m','Rabat-Salé Airport',16112,'Voyage Personelle','2025-04-20 09:40:41','2025-04-20 09:40:41'),(21,'Rabat','Esbjerg','2025-04-20','2025-04-20','20:39:00','06:39:00','10h 0m','Rabat-Salé Airport',16112,'Voyage Personelle','2025-04-20 09:46:53','2025-04-20 09:46:53'),(22,'Rabat','Esbjerg','2025-04-20','2025-04-20','20:39:00','06:39:00','10h 0m','Rabat-Salé Airport',16112,'Voyage Personelle','2025-04-20 09:53:19','2025-04-20 09:53:19'),(23,'Rabat','Esbjerg','2025-04-20','2025-04-20','20:39:00','06:39:00','10h 0m','Rabat-Salé Airport',16112,'Voyage Personelle','2025-04-20 09:53:57','2025-04-20 09:53:57'),(24,'Goroka','Goroka','2025-04-20','2025-04-20','22:02:00','00:02:00','2h 0m','Goroka Airport',14963,'Voyage Personelle','2025-04-20 10:03:17','2025-04-20 10:03:17'),(25,'Goroka','Goroka','2025-04-20','2025-04-20','22:02:00','00:02:00','2h 0m','Goroka Airport',14963,'Voyage Personelle','2025-04-20 10:08:46','2025-04-20 10:08:46'),(26,'Goroka','Goroka','2025-04-20','2025-04-20','22:02:00','00:02:00','2h 0m','Goroka Airport',14963,'Voyage Personelle','2025-04-20 10:09:19','2025-04-20 10:09:19'),(27,'Goroka','Goroka','2025-04-20','2025-04-20','22:02:00','00:02:00','2h 0m','Goroka Airport',14963,'Voyage Personelle','2025-04-20 10:09:58','2025-04-20 10:09:58'),(28,'Goroka','Goroka','2025-04-20','2025-04-20','22:02:00','00:02:00','2h 0m','Goroka Airport',14963,'Voyage Personelle','2025-04-20 10:17:11','2025-04-20 10:17:11'),(29,'Goroka','Goroka','2025-04-20','2025-04-20','22:02:00','00:02:00','2h 0m','Goroka Airport',14963,'Voyage Personelle','2025-04-20 10:18:33','2025-04-20 10:18:33'),(30,'Goroka','Goroka','2025-04-20','2025-04-20','22:02:00','00:02:00','2h 0m','Goroka Airport',14963,'Voyage Personelle','2025-04-20 10:20:49','2025-04-20 10:20:49'),(31,'Goroka','Goroka','2025-04-20','2025-04-20','15:31:00','08:31:00','17h 0m','Goroka Airport',5636,'Voyage Personelle','2025-04-20 10:33:01','2025-04-20 10:33:01'),(32,'Goroka','Goroka','2025-04-20','2025-04-20','15:31:00','08:31:00','17h 0m','Goroka Airport',5636,'Voyage Personelle','2025-04-20 10:34:01','2025-04-20 10:34:01'),(33,'Goroka','Goroka','2025-04-20','2025-04-20','15:31:00','08:31:00','17h 0m','Goroka Airport',5636,'Voyage Personelle','2025-04-20 10:35:51','2025-04-20 10:35:51'),(34,'Goroka','Goroka','2025-04-20','2025-04-20','15:31:00','08:31:00','17h 0m','Goroka Airport',5636,'Voyage Personelle','2025-04-20 10:37:55','2025-04-20 10:37:55'),(35,'Goroka','Goroka','2025-04-20','2025-04-20','21:54:00','11:54:00','14h 0m','Goroka Airport',9279,'Voyage Personelle','2025-04-20 10:54:31','2025-04-20 10:54:31'),(36,'Goroka','Goroka','2025-04-20','2025-04-20','21:54:00','11:54:00','14h 0m','Goroka Airport',9279,'Voyage Personelle','2025-04-20 10:56:20','2025-04-20 10:56:20'),(37,'Goroka','Goroka','2025-04-20','2025-04-20','21:54:00','11:54:00','14h 0m','Goroka Airport',9279,'Voyage Personelle','2025-04-20 10:56:52','2025-04-20 10:56:52'),(38,'Goroka','Goroka','2025-04-20','2025-04-20','21:54:00','11:54:00','14h 0m','Goroka Airport',9279,'Voyage Personelle','2025-04-20 10:57:51','2025-04-20 10:57:51'),(39,'Goroka','Goroka','2025-04-20','2025-04-20','21:54:00','11:54:00','14h 0m','Goroka Airport',9279,'Voyage Personelle','2025-04-20 10:58:14','2025-04-20 10:58:14'),(40,'Goroka','Goroka','2025-04-20','2025-04-20','14:10:00','03:10:00','13h 0m','Goroka Airport',10604,'Voyage Personelle','2025-04-20 11:11:02','2025-04-20 11:11:02'),(41,'Goroka','Goroka','2025-04-20','2025-04-20','14:14:00','11:14:00','21h 0m','Goroka Airport',13742,'Voyage Personelle','2025-04-20 11:14:54','2025-04-20 11:14:54'),(42,'Goroka','Goroka','2025-04-20','2025-04-20','14:14:00','11:14:00','21h 0m','Goroka Airport',13742,'Voyage Personelle','2025-04-20 11:24:14','2025-04-20 11:24:14'),(43,'Goroka','Goroka','2025-04-20','2025-04-20','14:14:00','11:14:00','21h 0m','Goroka Airport',13742,'Voyage Personelle','2025-04-20 11:31:35','2025-04-20 11:31:35'),(44,'Goroka','Goroka','2025-04-20','2025-04-20','14:08:00','09:08:00','19h 0m','Goroka Airport',14841,'Voyage Personelle','2025-04-20 12:09:38','2025-04-20 12:09:38'),(45,'Goroka','Goroka','2025-04-20','2025-04-20','14:08:00','09:08:00','19h 0m','Goroka Airport',14841,'Voyage Personelle','2025-04-20 12:14:07','2025-04-20 12:14:07'),(46,'Fes','Val D\'or','2025-04-20','2025-05-31','21:22:00','09:22:00','12h 0m','Saïss Airport',45794,'Voyage Personelle','2025-04-20 12:24:15','2025-04-20 12:24:15');
+/*!40000 ALTER TABLE `voyage_p` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -333,4 +434,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-15 12:49:14
+-- Dump completed on 2025-04-21 19:49:36
