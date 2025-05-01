@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'passenger' => [ // 👈 Ajoute ceci
+            'driver' => 'session',
+            'provider' => 'passenger',
+        ],
     ],
 
     /*
@@ -64,7 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
-
+        'passenger' => [ // 👈 Ajoute ceci
+                'driver' => 'eloquent',
+                'model' => App\Models\Passenger::class,
+            ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

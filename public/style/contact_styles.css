@@ -414,7 +414,7 @@ section
 	top: 15px;
 	right: -9px;
 	background: #FFFFFF;
-	width: 1px;
+	/* width: 1px; */
 	height: 9px;
 	content: '';
 }

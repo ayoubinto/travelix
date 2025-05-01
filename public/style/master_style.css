@@ -1,0 +1,48 @@
+.acount_div{
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: -172px;
+    background: linear-gradient(to right, #352c4f, #3b1c83);
+    /* border: 1px solid rgb(204, 204, 204); */
+    padding: 10px;
+    z-index: 100;
+    width: 384px;
+    height: 387px;
+    border-radius: 5px;
+    text-align: center;
+}
+.parag_account{
+    margin:0px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Poppins';
+    color: white;
+}
+.user_img{
+    width: 108px;
+    margin-top: 20px;
+    margin-bottom: 14px;
+}
+.btn_user{
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgb(193, 196, 238);   
+    padding: 11px;
+    border-radius:22px;
+    margin-top: 18px;
+    transition: 0.75s;
+    font-family: 'Poppins';
+}
+.btn_user:hover{
+    background-color: #0052A3;
+    color: white;
+    transition: .5s;
+    border: 1px solid #0052A3;
+}
+.account_buttons{
+    display: flex;
+    flex-direction: column;
+    width: 59%;
+    margin:auto;
+}

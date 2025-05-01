@@ -12,3 +12,6 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 document.getElementById('departing-date').value = formatDate(new Date());
+
+
+

@@ -20,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="{{url('style/Voyage_per.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url('style/reservation.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url('style/Facture.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url('style/master_style.css')}}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,17 +44,39 @@
                             <div class="phone">+212 65 52 63 20 25</div>
                             <div class="social">
                                 <ul class="social_list">
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a></li>
-                                    <li class="social_list_item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa-brands fa-dribbble"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa-brands fa-behance"></i></a></li>
+                                    <li class="social_list_item"><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
-                                <div class="user_box_login user_box_link"><a href="/Login">Se connecter</a></div>
-                                <div class="user_box_register user_box_link"><a href="#">registre</a></div>
+                                <div class="user_box_login user_box_link">
+									<div class="user_box_login user_box_link" style="position: relative;">
+										@if(Auth::guard('passenger')->check())
+											<div class="mon_compte" onclick="toggleAccountMenu()" style="cursor: pointer;">
+												<a href="#"><i class="fa-regular fa-circle-user"></i> {{session('nom_passeng')}}</a>
+											</div>
+											<!-- Menu déroulant -->
+											<div id="accountMenu" class="acount_div" style="display:none">
+												<p class="parag_account" style="margin-top: 12px;">{{session()->get('email_passeng')}}</p>
+												<img src="{{ url('images/mann.png') }}" alt="user" class="user_img">
+												<p class="parag_account">Bonjour {{session('nom_passeng')}}</p>
+												<form action="{{ route('logout.passenger') }}" method="POST">
+													@csrf
+													<div class="account_buttons">
+														<button type="submit" class="btn_user">Gérez votre compte</button>
+														<button type="submit" class="btn_user">Se déconnecter</button>
+													</div>
+												</form>
+											</div>
+										@else
+											<a href="{{ route('login') }}">Se connecter <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+										@endif
+									</div>
+								</div>
                             </div>
                         </div>
                     </div>
@@ -139,11 +162,11 @@
 								</div>
 								<p class="footer_about_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis vu lputate eros, iaculis consequat nisl. Nunc et suscipit urna. Integer eleme ntum orci eu vehicula pretium.</p>
 								<ul class="footer_social_list">
-									<li class="footer_social_item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
-									<li class="footer_social_item"><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-									<li class="footer_social_item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li class="footer_social_item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
-									<li class="footer_social_item"><a href="#"><i class="fa fa-behance"></i></a></li>
+									<li class="footer_social_item"><a href="#"><i class="fa-brands fa-pinterest"></i></a></li>
+									<li class="footer_social_item"><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+									<li class="footer_social_item"><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+									<li class="footer_social_item"><a href="#"><i class="fa-brands fa-dribbble"></i></a></li>
+									<li class="footer_social_item"><a href="#"><i class="fa-brands fa-behance"></i></a></li>
 								</ul>
 							</div>
 						</div>
@@ -235,54 +258,23 @@
 				</div>
 			</div>
 		</footer>
-
-		<!-- Copyright -->
-
-		<div class="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 order-lg-1 order-2  ">
-						<div class="copyright_content d-flex flex-row align-items-center">
-							<div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-		Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-		<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-						</div>
-					</div>
-					<div class="col-lg-9 order-lg-2 order-1">
-						<div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
-							<div class="footer_nav">
-								<ul class="footer_nav_list">
-									<li class="footer_nav_item"><a href="#">Accueil</a></li>
-									<li class="footer_nav_item"><a href="about.html">À propre de nous</a></li>
-									<li class="footer_nav_item"><a href="offres.html">offres</a></li>
-									<li class="footer_nav_item"><a href="blog.html">nouvelles</a></li>
-									<li class="footer_nav_item"><a href="contact.html">contact</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 	</div>
-
-<script src="{{url('js/jquery-3.2.1.min.js')}}"></script>
-<script src="{{url('style/bootstrap4/popper.js')}}"></script>
-<script src="{{url('style/bootstrap4/bootstrap.min.')}}"></script>
-<script src="{{url('plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
-<script src="{{url('plugins/easing/easing.js')}}"></script>
-<script src="{{url('js/custom.js')}}"></script>
-<script src="{{url('style/bootstrap4/bootstrap.min.js')}}"></script>
-<script src="{{url('plugins/greensock/TweenMax.min.js')}}"></script>
-<script src="{{url('plugins/greensock/TimelineMax.min.js')}}"></script>
-<script src="{{url('plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
-<script src="{{url('plugins/greensock/animation.gsap.min.js')}}"></script>
-<script src="{{url('plugins/greensock/ScrollToPlugin.min.js')}}"></script>
-<script src="{{url('plugins/parallax-js-master/parallax.min.js')}}"></script>
-<script src="{{url('js/about_custom.js')}}"></script>
-<script src="{{url('js/contact_custom.js')}}"></script>
-<script src="{{url('js/Voyage_rg.js')}}"></script>
+	<script src="{{url('js/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{url('style/bootstrap4/popper.js')}}"></script>
+	<script src="{{url('style/bootstrap4/bootstrap.min.')}}"></script>
+	<script src="{{url('plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
+	<script src="{{url('plugins/easing/easing.js')}}"></script>
+	<script src="{{url('js/custom.js')}}"></script>
+	<script src="{{url('style/bootstrap4/bootstrap.min.js')}}"></script>
+	<script src="{{url('plugins/greensock/TweenMax.min.js')}}"></script>
+	<script src="{{url('plugins/greensock/TimelineMax.min.js')}}"></script>
+	<script src="{{url('plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
+	<script src="{{url('plugins/greensock/animation.gsap.min.js')}}"></script>
+	<script src="{{url('plugins/greensock/ScrollToPlugin.min.js')}}"></script>
+	<script src="{{url('plugins/parallax-js-master/parallax.min.js')}}"></script>
+	<script src="{{url('js/about_custom.js')}}"></script>
+	<script src="{{url('js/contact_custom.js')}}"></script>
+	<script src="{{url('js/Voyage_rg.js')}}"></script>
+	<script src="{{url('js/Master.js')}}"></script>
 </body>
-
 </html>

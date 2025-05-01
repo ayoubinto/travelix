@@ -170,13 +170,13 @@
             </div>
         @endforeach
     @else
-        <div class="no-flights">
+        <!-- <div class="no-flights">
             <div class="animation">
                 <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
                 <dotlottie-player src="https://lottie.host/ce2dfad5-b01e-4f30-bc77-863bf2cac530/OtX6XBHHN5.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" autoplay></dotlottie-player>
                 <h1 class="heading3">Aucun vol trouvé</h1>
             </div>
-        </div>
+        </div> -->
     </div>
     @endif
     </div>

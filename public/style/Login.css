@@ -47,7 +47,7 @@ a {
 }
 
 button {
-	border-radius: 20px;
+	border-radius: 34px;
 	border: 1px solid #5E3A79;
 	background-color: #5E3A79;
 	color: #FFFFFF;
@@ -104,6 +104,8 @@ input {
 	width: 1000px;;
 	max-width: 100%;
 	min-height: 617px;
+	z-index: 1;
+	position: relative;
 }
 
 .form-container {
@@ -245,3 +247,59 @@ button{
     filter: blur(4px);
     z-index: -1;
   }
+.error_container{
+	position: absolute;
+	z-index: 5;
+	background:white;
+	display: flex;
+	flex-direction: column;
+	padding:19px;
+	border-radius: 6px;
+	animation: bounce; /* referring directly to the animation's @keyframe declaration */
+	animation-duration: 2s;
+	bottom: 0%;
+	width: 39%;
+}
+.parag_error{
+	font-size: 16px;
+	font-weight: 600;
+	font-family: 'Poppins';
+	color: #3e3838;
+	/* width: 76%; */
+	text-align: center;
+	margin:auto;
+	margin-bottom: auto;
+	margin-bottom: 5px;
+	visibility: visible;
+    transition: opacity 0.5s ease, visibility 0s 0.5s; 
+	margin-left: 60px;
+	position: absolute;
+	top: 42%;
+	left: 6%;
+}
+
+.error-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.animate__animated.animate__bounce {
+	--animate-duration: 0.5s;
+}
+:root {
+	--animate-duration: 500ms;
+	--animate-delay: 0.5s;
+}
+/* #errorBox{
+	display:none;
+	position: absolute;
+	left: 33%;
+	top: 91%;
+	width: 36%;
+	height: 78px;
+	background:white;
+	color: red;
+	border-radius:6px;
+	
+	align-items: center;
+	justify-content: center;
+} */
