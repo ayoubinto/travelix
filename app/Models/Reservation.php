@@ -13,13 +13,14 @@ class Reservation extends Model
     // Indiquer les colonnes qui peuvent être assignées massivement
     protected $table = 'reservation';
     protected $primaryKey = 'id_reservation';
-    public $timestamps = false;
+    public $timestamps = false; // Désactiver les timestamps si vous ne les utilisez pas
     protected $fillable = [
-        'id_passeng',     // Ajoute id_passeng ici
+        'id_passeng',
         'id_voyagep',
         'nombre_adultes',
         'nombre_enfants',
         'date_reservation',
+        'type_paiement'
     ];
     public function passenger()
     {
@@ -29,4 +30,5 @@ class Reservation extends Model
     {
         return $this->belongsTo(Voyage_p::class, 'id_voyagep'); // 'id_voyagep' est la clé étrangère
     }
+
 }

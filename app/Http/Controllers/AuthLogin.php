@@ -11,11 +11,12 @@ class AuthLogin extends Controller
 {
     public function logout(Request $request)
     {
-        Auth::guard('passenger')->logout();
+        Auth::guard('admin')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
     }
+
     public function showLoginForm(){
         return view('login');
     }
@@ -25,6 +26,19 @@ class AuthLogin extends Controller
             'email_passeng' => $request->email,
             'password' => $request->password
         ];
+
+        $credentials_admin = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        if (Auth::guard('admin')->attempt($credentials_admin)) {
+            $user = Auth::guard('admin')->user();
+            $request->session()->regenerate();
+            session(['name' => $user->name]);
+            session(['email' => $user->email]);
+            session()->flash('login_success', true);
+            return redirect()->intended('/dashboard');
+        }
         if (Auth::guard('passenger')->attempt($credentials)) {
             $user = Auth::guard('passenger')->user();
             $request->session()->regenerate();

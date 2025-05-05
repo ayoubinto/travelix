@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Travelix Project">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{{url('style/bootstrap4/bootstrap.min.css')}}">
 	<link href="{{url('plugins/font-awesome-4.7.0/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -68,6 +69,23 @@
 													@csrf
 													<div class="account_buttons">
 														<button type="submit" class="btn_user">Gérez votre compte</button>
+														<button type="submit" class="btn_user">Se déconnecter</button>
+													</div>
+												</form>
+											</div>
+											@elseif(Auth::guard('admin')->check())
+											<div class="mon_compte" onclick="toggleAccountMenu()" style="cursor: pointer;">
+												<a href="#"><i class="fa-regular fa-circle-user"></i> {{session('nom_passeng')}}</a>
+											</div>
+											<!-- Menu déroulant -->
+											<div id="accountMenu" class="acount_div" style="display:none">
+												<p class="parag_account" style="margin-top: 12px;">{{session()->get('email')}}</p>
+												<img src="{{ url('images/management.png') }}" alt="user" class="user_img">
+												<p class="parag_account">Bonjour au Administrateur {{session('name')}}</p>
+												<form action="{{ route('logout.passenger') }}" method="POST">
+													@csrf
+													<div class="account_buttons">
+														<button class="btn_user"><a style="font-size:10px;margin:0px" href="/dashboard">aller au tableau de bord</a></button>
 														<button type="submit" class="btn_user">Se déconnecter</button>
 													</div>
 												</form>

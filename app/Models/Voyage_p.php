@@ -19,6 +19,7 @@ class Voyage_p extends Model
         'duree',
         'nom_aeroport',
         'prix',
+        'prix_unitaire',
         'type_voyagep'
     ];
 }

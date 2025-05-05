@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Passenger extends Authenticatable
+class Passenger extends Authenticatable  
 {
     protected $table = 'passenger'; // Si le nom de ta table n'est pas "passengers"
     protected $primaryKey = 'id_passeng'; // Si ta clé primaire est autre que "id"

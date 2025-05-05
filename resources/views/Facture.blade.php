@@ -7,7 +7,8 @@
     </div>  
 </div>
 <div class="Div_for_paiement" id="Div_for_paiement">
-    <!-- <form action="" class="form_paiement"> -->
+    <form action="{{ route('reservation.paiement', $reservation->id_reservation)}}" class="form_paiement" method="POST">
+        @csrf
         <div class="div_heading_paiement">
             <h1 class="heading3">PAIEMENT</h1>
         </div>
@@ -17,7 +18,7 @@
                     <img src="{{ asset('images/visa-mastercard-logos-wh429a8o742pgm38.png') }}" class="imgvisa" alt="VISA MASTER CARD">
                 </div>
                 <div class="visa_input">
-                    <input type="radio" value="visa" id="visa" class="input"> Payez 340,00$ avec carte de crédit</input>
+                    <input type="radio" name="type_paiement" value="visa" id="visa" class="input"> Payez {{ $reservation->voyage->prix }} MAD avec carte de crédit</input>
                 </div>
             </div>
             <div class="visa">
@@ -25,7 +26,7 @@
                     <img src="{{ asset('images/Paypal_logo_PNG5.png') }}" class="imgvisa" alt="VISA MASTER CARD">
                 </div>
                 <div class="visa_input">
-                    <input type="radio" value="paypal" id="paypal" class="input_visa"> Payez 340,00$ avec Paypal</input>
+                    <input type="radio" name="type_paiement" value="paypal" id="paypal" class="input_visa"> Payez {{ $reservation->voyage->prix }} MAD avec Paypal</input>
                 </div>
             </div>
           </div>
@@ -54,9 +55,10 @@
                   </span>
               </div>
           </div>
-          <button class="book-button btn_payment" id="Resert">Payer {{ $reservation->voyage->prix }} MAD</button>
+          <button type="submit" class="book-button btn_payment" id="Resert">Payer {{ $reservation->voyage->prix }} MAD</button>
         </div>
-<div class="box" id="boxx"  style="display:none">
+    </form>
+    <div class="box" id="boxx"  style="display:none">
   <ul class="left">
     <li></li>
     <li></li>
@@ -128,23 +130,50 @@
 @endsection
 @section('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded'); // Debugging line
+// document.addEventListener('DOMContentLoaded', function() {
+//     console.log('DOM loaded'); // Debugging line
     
-    const paymentButton = document.getElementById('Resert');
+//     const paymentButton = document.getElementById('Resert');
+//     const factureButton = document.getElementById('facture');
+    
+//     if (!paymentButton) {
+//         console.error('Payment button not found!');
+//         return;
+//     }
+    
+//     console.log('Button found, adding listener'); // Debugging line
+    
+//     paymentButton.addEventListener('click', function(e) {
+//         console.log('Button clicked'); // Debugging line
+//         e.preventDefault();
+        
+//         const paymentDiv = document.getElementById('Div_for_paiement');
+//         const ticketDiv = document.getElementById('boxx');
+        
+//         if (!paymentDiv || !ticketDiv) {
+//             console.error('Required elements not found');
+//             return;
+//         }
+        
+//         paymentDiv.style.display = 'none';
+//         ticketDiv.style.display = 'flex';
+//         factureButton.style.display = 'block';
+        
+//         // Optional: Scroll to ticket
+//         // ticketDiv.scrollIntoView({ behavior: 'smooth' });
+//     });
+// });
+document.addEventListener('DOMContentLoaded', function() {
+    const paymentForm = document.querySelector('.form_paiement');
     const factureButton = document.getElementById('facture');
     
-    if (!paymentButton) {
-        console.error('Payment button not found!');
+    if (!paymentForm) {
+        console.error('Payment form not found!');
         return;
     }
-    
-    console.log('Button found, adding listener'); // Debugging line
-    
-    paymentButton.addEventListener('click', function(e) {
-        console.log('Button clicked'); // Debugging line
+
+    paymentForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
         const paymentDiv = document.getElementById('Div_for_paiement');
         const ticketDiv = document.getElementById('boxx');
         
@@ -152,13 +181,28 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Required elements not found');
             return;
         }
-        
-        paymentDiv.style.display = 'none';
-        ticketDiv.style.display = 'flex';
-        factureButton.style.display = 'block';
-        
-        // Optional: Scroll to ticket
-        // ticketDiv.scrollIntoView({ behavior: 'smooth' });
+        fetch(paymentForm.action, {
+            method: 'POST',
+            body: new FormData(paymentForm),
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                paymentDiv.style.display = 'none';
+                ticketDiv.style.display = 'flex';
+                factureButton.style.display = 'block';
+            } else {
+                alert('Erreur lors du paiement: ' + (data.message || 'Erreur inconnue'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Une erreur est survenue lors du paiement');
+        });
     });
 });
 </script>
